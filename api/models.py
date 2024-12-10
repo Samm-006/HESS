@@ -53,7 +53,7 @@ class Assignment(models.Model):
 # Student Assignment Table
 class StudentAssignment(models.Model):
     student_id = models.ForeignKey(Student, on_delete = models.CASCADE)
-    assignment_id = models.ForeignKey(Student, on_delete = models.CASCADE)
+    assignment_id = models.ForeignKey(Assignment, on_delete = models.CASCADE)
     score = models.FloatField()
 
 # Feedback Table    
