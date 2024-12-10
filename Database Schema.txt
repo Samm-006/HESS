@@ -1,0 +1,45 @@
+Student Table:
+    Attributes:
+        StudentID   Integer
+        FirstName   String
+        LastName    String 
+        Email       String
+        Password    String 
+
+Module Table
+    Attributes:
+        ModuleID    Integer
+        Title       String 
+
+Section Table
+    Attributes:
+        SectionID       Integer
+        OverAllMarks    Float
+        CustomName      String 
+
+SectionTag Table
+    Attributes:
+        TagId           Integer
+        SectionID       Integer
+        TagName         String
+
+Assignment Table
+    Attributes:
+        AssignmentID    Integer
+        ModuleID        Integer
+        Text            String
+        TotalMarks      Integer
+
+StudentAssignment Table
+    Attributes
+        StudentID       Integer
+        AssignmentID    Integer
+        Score           Float
+
+FeedBack Table
+    Attributes:
+        FeedbackID      Integer
+        AssignmentID    Integer
+        StudentID       Integer
+        Comment         String
+        Category        String [Strength, Weakness, Custom]
