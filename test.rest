@@ -1,0 +1,31 @@
+POST http://127.0.0.1:8000/login/
+Content-Type: application/json
+
+{ "username": "john", "password": "1234"}
+
+###
+POST http://127.0.0.1:8000/signup/
+Content-Type: application/json
+
+{ "first_name": "Peter", "last_name": "Smith", "username": "john", "password": "1234", "email": "peter@gmail.com"}
+
+###
+
+GET http://127.0.0.1:8000/test_token/
+Content-Type: application/json
+Authorization: Token 33bdd1812e0f8759ed0a656c1e3bcf828e56c44c
+
+{}
+
+### 
+GET http://127.0.0.1:8000/users/
+Content-Content-Type: application/json
+
+{}
+
+
+###
+POST http://127.0.0.1:8000/api/modules/create/
+Content-Type: application/json
+
+{ "title": "CS301"}

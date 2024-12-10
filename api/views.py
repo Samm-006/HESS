@@ -5,7 +5,6 @@ from .models import Student, Module, Section, SectionTag, Assignment, StudentAss
 from .serializers import (
     StudentSerializer, ModuleSerializer, SectionSerializer, SectionTagSerializer, AssignmentSerializer, StudentAssignmentSerializer, FeedbackSerializer
 )
-from django.shortcuts import get_object_404
 
 # Create your views here.
 ################# Student #################
@@ -42,7 +41,7 @@ def student_details(request, pk):
     
     # Determine HTTP method
     if request.method == 'GET':
-        serializer = StudentSerializer(module)
+        serializer = StudentSerializer(student)
         return Response(serializer.data)
     
     
@@ -121,6 +120,45 @@ def section_details(request, pk):
         serializer = SectionSerializer(section)
         return Response(serializer.data)
     
+
+################# SectionTag #################
+# Get SectionTag Endpoints
+@api_view(['GET'])
+def get_section_tags(request):
+    section_tags = SectionTag.objects.all()
+    serializer = SectionTagSerializer(section_tags, many = True)
+    return Response(serializer.data)
+
+# Add New SectionTag
+@api_view(['POST'])
+def create_section_tag(request):
+    
+    # Extract data from request.data
+    serializer = SectionTagSerializer(data = request.data)
+    
+    # Check if serializer is valid
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status = status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+    
+# SectionTag Specific Endpoints
+@api_view(['GET'])
+def section_tag_details(request, pk):
+    
+    # Find sectiontag
+    try:
+        section_tag = SectionTag.objects.get(pk = pk)
+    except SectionTag.DoesNotExist:
+        return Response(status = status.HTTP_404_NOT_FOUND)
+    
+    # Determine HTTP method
+    if request.method == 'GET':
+        serializer = SectionTagSerializer(section_tag)
+        return Response(serializer.data)
+    
+
 
 ################# Assignments #################
 # Get Assignments Endpoints
