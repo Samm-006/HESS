@@ -1,0 +1,12 @@
+import React from "react";
+import PersonalizedFeedback from "./pages/PersonalizedFeedback";
+
+function App() {
+  return (
+    <div>
+      <PersonalizedFeedback />
+    </div>
+  );
+}
+
+export default App;
